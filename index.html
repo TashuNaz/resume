@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Portfolio</title>
+  <link rel="stylesheet" href="./Portfolio.css">
+  <script src="https://kit.fontawesome.com/7c4aedc242.js" crossorigin="anonymous"></script>
+</head>
+<body>
+
+  <div id="header">
+    <div class="container">
+      <nav>
+        <ul id="sidemenu">
+          <li><a href="#header">Home</a></li>
+          <li><a href="#about">About</a></li>
+          <li><a href="#education">Education</a></li>
+          <li><a href="#contact">Contact</a></li>
+          <i class="fas fa-times" onclick="closemenu()"></i>
+        </ul>
+        <i class="fas fa-bars" onclick="openmenu()"></i>
+      </nav>
+      <div class="header-text">
+        <h1 class="sub-title">Hi,<br>I'm <span>Thasmiya Naz</span></h1>
+        <p style="padding: 20px;">Web Developer</p>
+      </div>
+    </div>
+  </div>
+  <!-- ------------------------about---------------------------- -->
+  <div id="about">
+    <div class="container">
+      <div class="row">
+        <div class="about-col-1">
+          <img id="portphoto" src="./tashupic (2).jpg">
+        </div>
+        <div class="about-col-2">
+          <h1 style="padding-bottom: 10px; color: white;">About Me</h1>
+          <p id="aboutp">Hi, I'm Thasmiya Naz, and I graduated from Sambhram Institute of Technology in 2022 with a degree in Information Science. My interests are in Front End Development, and I love to create attractive and performant products with delightful user experiences.</p>
+          <div class="tab-titles">
+            <p class="tab-links active-link" onclick="opentab('skills')" >Skills</p>
+            <p class="tab-links" onclick="opentab('experience')" >Experience</p>
+            <p class="tab-links" onclick="opentab('education')" >Education</p>
+          </div>
+          <div class="tab-contents active-tab" id="skills">
+            <ul>
+              <li><span>HTML</span><br></li>
+              <li><span>CSS</span><br></li>
+              <li><span>Javascript</span><br></li>
+              <li><span>Bootstap</span><br></li>
+              <h3>Additional Skills</h3>
+              <li><span>Java</span><br></li>
+              <li><span>Database Management</span><br></li>
+              <li><span></span></li>
+            </ul>
+          </div>
+          <div class="tab-contents" id="experience">
+            <ul>
+              <li><span>Worked at Quanbee Technologies,Mysore for 1 year</span><br></li>
+              <li><span>Created responsive Websites</span><br></li>
+            </ul>
+          </div>
+          <div class="tab-contents" id="education">
+            <ul>
+              <li>Bachlor of Engineering<br> <span id="stag">Sambhram Institute Of Technology,2022</span><br></li>
+              <li>Java Full Stack Development Course<br><span id="stag">ABC Institute of Technology</span><br></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+ <!-- ------------------------------Contact---------------------------- -->
+ <div id="contact">
+  <div class="container">
+    <div class="row">
+      <div class="contact-left">
+        <h1 class="sub-title">Contact Me</h1>
+        <p class="conp">Contact @ tashu.naaz7@gmail.com</p>
+        <p class="conp">0553297010</p>
+        <br>
+      <a href="./tashu.naaz7@gmail.com (12).pdf" download class="btn">Download Cv</a>
+      </div>
+      <div class="contact-right">
+        <form name="submit-to-google-sheet">
+          <input type="text" name="Name" placeholder="Your Name" required>
+          <input type="email" name="email" placeholder="Your Email" required>
+          <textarea name="Message" rows="5" placeholder="Your Message"></textarea>
+         <center> <button type="submit" class="btn">Submit</button> </center>
+        </form>
+        <span id="msg"></span>
+    </div>
+  </div>
+ </div> 
+  <script>
+    var tablinks = document.getElementsByClassName("tab-links");
+    var tabcontents = document.getElementsByClassName("tab-contents");
+
+
+    function opentab(tabname){
+      for(tablink of tablinks){
+      tablink.classList.remove("active-link")
+      }
+      for(tabcontent of tabcontents){
+        tabcontent.classList.remove("active-tab")
+      }
+      event.currentTarget.classList.add("active-link");
+      document.getElementById(tabname).classList.add("active-tab");
+    }
+  </script>
+
+  <script>
+
+    var sidemenu = document.getElementById("sidemenu");
+
+    function openmenu(){
+    sidemenu.style.right = "0";
+    }
+
+    function closemenu(){
+    sidemenu.style.right = "-200px";
+    }
+  </script>
+
+<script>
+  const scriptURL = 'https://script.google.com/macros/s/AKfycbwz5G4ewC2YtehdZ2cGi4FzWGoxyP75AW3Tcx-_TSYw0xBbh3uAMFyTVfDNZ9YoS5CdDQ/exec'
+  const form = document.forms['submit-to-google-sheet']
+  const msg = document.getElementById("msg")
+
+  form.addEventListener('submit', e => {
+    e.preventDefault()
+    fetch(scriptURL, { method: 'POST', body: new FormData(form)})
+      .then(response => {
+        msg.innerHTML= "Details sent successfully"
+        setTimeout(function(){
+          msg.innerHTML = ""
+        },5000)
+        form.reset()
+      })
+      .catch(error => console.error('Error!', error.message))
+  })
+</script>
+</body>
+</html>
