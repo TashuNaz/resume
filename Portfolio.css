@@ -169,6 +169,7 @@ body{
  .btn{
     display: block;
     background-color: black;
+    color: blueviolet;
     text-decoration:none;
     padding: 14px 20px;
     border: 5px solid #fff;
