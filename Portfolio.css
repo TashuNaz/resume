@@ -80,6 +80,11 @@ body{
     padding: 20px 0;
     color: #ababab;
    }
+ #aboutp{
+    font-family: cursive;
+    font-size: 30px;
+    color: #b90775;
+ }
 
 .row{
     display: flex;
@@ -133,8 +138,9 @@ body{
     margin: 10px 0;
 }
 .tab-contents ul li span{
-    color: #b54769;
-    font-size: 25px;
+    color: #b90775;
+    font-size: 30px;
+    font-family: cursive;
 }
 .tab-contents{
     display: none;
